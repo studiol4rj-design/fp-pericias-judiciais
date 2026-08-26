@@ -4,7 +4,8 @@ const requestedArea = new URLSearchParams(window.location.search).get("area");
 
 if (requestedArea && contactForm) {
   const subject = contactForm.querySelector("#subject");
-  const match = subject && Array.from(subject.options).find((option) => option.textContent.trim().toLowerCase() === requestedArea.trim().toLowerCase());
+  const normalizedArea = requestedArea.trim().toLocaleLowerCase("pt-BR");
+  const match = subject && Array.from(subject.options).find((option) => option.textContent.trim().toLocaleLowerCase("pt-BR") === normalizedArea);
   if (match) subject.value = match.value || match.textContent;
 }
 
@@ -23,21 +24,24 @@ if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(contactForm);
-    const optional = (label, key) => formData.get(key) ? `${label}: ${formData.get(key)}` : null;
+    const optional = (label, key) => {
+      const value = String(formData.get(key) || "").trim();
+      return value ? `${label}: ${value}` : null;
+    };
     const lines = [
-      "Ola, encontrei o site da FP Pericias Judiciais e gostaria de solicitar uma analise inicial de uma demanda pericial.",
+      "Olá, encontrei o site da FP Perícias Judiciais e gostaria de solicitar uma análise inicial de uma demanda pericial.",
       "",
       `Nome: ${formData.get("name")}`,
       `E-mail: ${formData.get("email")}`,
       `Telefone: ${formData.get("phone")}`,
       optional("Perfil", "profile"),
-      `Provavel area da pericia: ${formData.get("subject")}`,
+      `Provável área da perícia: ${formData.get("subject")}`,
       optional("Natureza da demanda", "matterType"),
       optional("Tribunal", "court"),
-      optional("Numero do processo", "caseNumber"),
+      optional("Número do processo", "caseNumber"),
       optional("Fase processual", "phase"),
       optional("Prazo", "deadline"),
-      optional("Material disponivel", "material"),
+      optional("Material disponível", "material"),
       optional("Necessidade principal", "serviceNeed"),
       "",
       "Resumo do caso:",
