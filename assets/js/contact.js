@@ -1,26 +1,52 @@
 const contactForm = document.querySelector("#contact-form");
+const conditionalFields = document.querySelectorAll("[data-visible-when]");
+const requestedArea = new URLSearchParams(window.location.search).get("area");
+
+if (requestedArea && contactForm) {
+  const subject = contactForm.querySelector("#subject");
+  const normalizedArea = requestedArea.trim().toLocaleLowerCase("pt-BR");
+  const match = subject && Array.from(subject.options).find((option) => option.textContent.trim().toLocaleLowerCase("pt-BR") === normalizedArea);
+  if (match) subject.value = match.value || match.textContent;
+}
+
+function updateConditionalFields() {
+  conditionalFields.forEach((field) => {
+    const [name, expectedValue] = field.dataset.visibleWhen.split(":");
+    const visible = contactForm?.elements[name]?.value === expectedValue;
+    field.hidden = !visible;
+    if (!visible) field.querySelectorAll("input, select, textarea").forEach((input) => input.value = "");
+  });
+}
 
 if (contactForm) {
+  contactForm.addEventListener("change", updateConditionalFields);
+  updateConditionalFields();
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
-
     const formData = new FormData(contactForm);
-    const phone = contactForm.dataset.whatsapp;
-    const message = [
-      "Ola, FP Pericias Judiciais.",
-      "",
-      "Gostaria de solicitar uma avaliacao tecnica inicial.",
+    const optional = (label, key) => {
+      const value = String(formData.get(key) || "").trim();
+      return value ? `${label}: ${value}` : null;
+    };
+    const lines = [
+      "Olá, encontrei o site da FP Perícias Judiciais e gostaria de solicitar uma análise inicial de uma demanda pericial.",
       "",
       `Nome: ${formData.get("name")}`,
       `E-mail: ${formData.get("email")}`,
       `Telefone: ${formData.get("phone")}`,
-      `Tipo de demanda: ${formData.get("subject")}`,
-      `Prazo ou fase do processo: ${formData.get("deadline")}`,
+      optional("Perfil", "profile"),
+      `Provável área da perícia: ${formData.get("subject")}`,
+      optional("Natureza da demanda", "matterType"),
+      optional("Tribunal", "court"),
+      optional("Número do processo", "caseNumber"),
+      optional("Fase processual", "phase"),
+      optional("Prazo", "deadline"),
+      optional("Material disponível", "material"),
+      optional("Necessidade principal", "serviceNeed"),
       "",
       "Resumo do caso:",
       formData.get("message")
-    ].join("\n");
-
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+    ].filter(Boolean);
+    window.open(`https://wa.me/${contactForm.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener");
   });
 }
