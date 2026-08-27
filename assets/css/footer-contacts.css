@@ -16,15 +16,17 @@
   height: auto !important;
   min-height: 0 !important;
   max-height: none !important;
-  padding: 10px 0 !important;
+  padding: 12px 0 14px !important;
   overflow: visible !important;
   border-top: 1px solid rgba(255,255,255,.12);
 }
-.site-footer::before, .site-footer::after { content: none !important; display: none !important; }
+.site-footer::before,
+.site-footer::after { content: none !important; display: none !important; }
+
 .site-footer .footer-inner.footer-shell {
   display: grid !important;
   grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
-  align-items: center;
+  align-items: start;
   gap: 24px;
   min-height: 0 !important;
   height: auto !important;
@@ -32,7 +34,16 @@
   padding: 0 !important;
   text-align: left;
 }
-.footer-contacts { grid-column: 1; justify-self: start; width: 100%; max-width: 430px; }
+
+/* Neutraliza o padding global aplicado a todas as tags section do site. */
+.site-footer .footer-contacts {
+  grid-column: 1;
+  justify-self: start;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 .footer-contacts h3 { margin: 0 0 6px; color: #fff; font-size: .9rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
 .footer-contact-list { display: grid; gap: 4px; }
 .footer-contact-link { display: grid; grid-template-columns: 24px minmax(0,1fr); gap: 8px; align-items: center; color: #fff; text-decoration: none; }
@@ -44,20 +55,39 @@
 .footer-contact-copy strong { flex:0 0 auto; color:#fff; font-size:.88rem; font-weight:800; }
 .footer-contact-copy span { min-width:0; color:rgba(255,255,255,.86); font-size:.86rem; overflow-wrap:anywhere; text-decoration:underline; text-underline-offset:2px; }
 
-.footer-main { grid-column: 2; position: static !important; transform: none !important; display:grid; justify-items:center; gap:3px; width:auto; max-width:560px; text-align:center; }
-.footer-main > strong { color:#fff; font-size:1rem; font-weight:900; }
-.footer-main > span { color:rgba(255,255,255,.78); font-size:.84rem; line-height:1.2; }
-.footer-main .content-protection { color:rgba(255,255,255,.66); font-size:.77rem; }
-.footer-main .studio-credit { margin-top:0; }
+.footer-main {
+  grid-column: 2;
+  position: static !important;
+  transform: none !important;
+  display: grid;
+  justify-items: center;
+  align-self: start;
+  gap: 4px;
+  width: auto;
+  max-width: 580px;
+  padding-top: 1px;
+  text-align: center;
+}
+.footer-main > strong { color:#fff; font-size:1.08rem; font-weight:900; }
+.footer-main > span { color:rgba(255,255,255,.8); font-size:.9rem; line-height:1.2; }
+.footer-main .content-protection { color:rgba(255,255,255,.68); font-size:.82rem; }
+.footer-main .studio-credit { margin-top:1px; }
 .footer-legal { display:flex; gap:8px; align-items:center; justify-content:center; margin-top:2px; flex-wrap:wrap; }
-.footer-legal a { color:#fff; font-size:.77rem; font-weight:700; text-decoration:underline; text-underline-offset:2px; }
-.footer-legal a:hover, .footer-legal a:focus-visible, .footer-main .studio-credit a:hover, .footer-main .studio-credit a:focus-visible { color:#fff; }
+.footer-legal a { color:#fff; font-size:.82rem; font-weight:700; text-decoration:underline; text-underline-offset:2px; }
+.footer-legal a:hover,
+.footer-legal a:focus-visible,
+.footer-main .studio-credit a:hover,
+.footer-main .studio-credit a:focus-visible { color:#fff; }
 .footer-legal-separator { color:rgba(255,255,255,.5); }
 
 @media (max-width: 900px) {
   .cta-section { padding: 14px 0 !important; }
   .site-footer { padding:12px 0 !important; }
   .site-footer .footer-inner.footer-shell { grid-template-columns:1fr; gap:12px; }
-  .footer-contacts, .footer-main { grid-column:1; justify-self:center; width:100%; max-width:520px; }
+  .site-footer .footer-contacts,
+  .footer-main { grid-column:1; justify-self:center; width:100%; max-width:520px; }
+  .footer-main { padding-top: 0; }
 }
-@media (max-width:560px) { .footer-contact-copy { flex-direction:column; gap:0; } }
+@media (max-width:560px) {
+  .footer-contact-copy { flex-direction:column; gap:0; }
+}
