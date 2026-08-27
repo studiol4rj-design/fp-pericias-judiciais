@@ -2,43 +2,43 @@
   display: none !important;
 }
 
-/* Faixa final mais compacta e integrada ao rodapé. */
+/* Faixa final enxuta e integrada ao rodapé. */
 .cta-section {
-  padding: 26px 0 22px;
+  padding: 16px 0 14px;
   background: linear-gradient(180deg, #163b60 0%, #102a43 100%);
 }
 
 .cta-section .cta-inner {
-  gap: 22px;
+  gap: 16px;
   align-items: center;
 }
 
 .cta-section .eyebrow {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
 .cta-section .cta-inner h2 {
-  margin-bottom: 5px;
-  font-size: clamp(1.55rem, 2.7vw, 2.15rem);
-  line-height: 1.06;
+  margin-bottom: 3px;
+  font-size: clamp(1.45rem, 2.45vw, 1.95rem);
+  line-height: 1.02;
 }
 
 .cta-section .cta-inner p {
-  max-width: 700px;
+  max-width: 680px;
   margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.38;
+  font-size: 0.88rem;
+  line-height: 1.28;
 }
 
 .cta-section .btn {
-  min-height: 40px;
-  padding: 9px 15px;
+  min-height: 36px;
+  padding: 7px 13px;
 }
 
 .site-footer {
   position: relative;
   min-height: 0;
-  padding: 12px 0 14px;
+  padding: 6px 0 8px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -52,7 +52,7 @@
   position: relative;
   display: block;
   max-width: 1180px;
-  min-height: 78px;
+  min-height: 64px;
   text-align: left;
 }
 
@@ -61,9 +61,9 @@
 }
 
 .footer-contacts h3 {
-  margin: 0 0 6px;
+  margin: 0 0 4px;
   color: #ffffff;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -71,13 +71,13 @@
 
 .footer-contact-list {
   display: grid;
-  gap: 4px;
+  gap: 2px;
 }
 
 .footer-contact-link {
   display: grid;
-  grid-template-columns: 21px minmax(0, 1fr);
-  gap: 7px;
+  grid-template-columns: 19px minmax(0, 1fr);
+  gap: 6px;
   align-items: center;
   color: #ffffff;
   text-decoration: none;
@@ -90,8 +90,8 @@
 
 .footer-contact-icon {
   display: grid;
-  width: 19px;
-  height: 19px;
+  width: 17px;
+  height: 17px;
   place-items: center;
   color: #ffffff;
 }
@@ -116,21 +116,21 @@
   min-width: 0;
   flex-direction: row;
   align-items: baseline;
-  gap: 5px;
-  line-height: 1.15;
+  gap: 4px;
+  line-height: 1.05;
 }
 
 .footer-contact-copy strong {
   flex: 0 0 auto;
   color: #ffffff;
-  font-size: 0.77rem;
+  font-size: 0.72rem;
   font-weight: 800;
 }
 
 .footer-contact-copy span {
   min-width: 0;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 0.76rem;
+  font-size: 0.71rem;
   overflow-wrap: anywhere;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -144,26 +144,26 @@
   display: grid;
   width: min(520px, 46%);
   justify-items: center;
-  gap: 2px;
+  gap: 1px;
   text-align: center;
   transform: translate(-50%, -50%);
 }
 
 .footer-main > strong {
   color: #ffffff;
-  font-size: 0.92rem;
+  font-size: 0.86rem;
   font-weight: 900;
 }
 
 .footer-main > span {
   color: rgba(255, 255, 255, 0.72);
-  font-size: 0.76rem;
-  line-height: 1.25;
+  font-size: 0.7rem;
+  line-height: 1.12;
 }
 
 .footer-main .content-protection {
   color: rgba(255, 255, 255, 0.58);
-  font-size: 0.68rem;
+  font-size: 0.63rem;
 }
 
 .footer-main .studio-credit {
@@ -172,16 +172,16 @@
 
 .footer-legal {
   display: flex;
-  gap: 7px;
+  gap: 6px;
   align-items: center;
   justify-content: center;
-  margin-top: 1px;
+  margin-top: 0;
   flex-wrap: wrap;
 }
 
 .footer-legal a {
   color: #ffffff;
-  font-size: 0.68rem;
+  font-size: 0.63rem;
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -200,17 +200,17 @@
 
 @media (max-width: 900px) {
   .cta-section {
-    padding: 24px 0 20px;
+    padding: 18px 0 16px;
   }
 
   .site-footer {
-    padding: 14px 0;
+    padding: 10px 0;
   }
 
   .site-footer .footer-inner.footer-shell {
     display: grid;
     min-height: 0;
-    gap: 12px;
+    gap: 10px;
   }
 
   .footer-contacts {
