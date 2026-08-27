@@ -1,0 +1,63 @@
+name: Sincroniza links legais do rodape
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/sincroniza-links-legais.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-footer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inserir links legais nos rodapes
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          changed = []
+          for path in Path('.').rglob('*.html'):
+              text = path.read_text(encoding='utf-8-sig')
+              if '<footer class="site-footer">' not in text:
+                  continue
+              if 'class="footer-legal"' in text:
+                  continue
+
+              depth = len(path.parts) - 1
+              prefix = '../' * depth
+              legal = (
+                  f'        <nav class="footer-legal" aria-label="Links legais">\n'
+                  f'          <a href="{prefix}privacidade.html">Política de Privacidade</a>\n'
+                  f'          <span class="footer-legal-separator" aria-hidden="true">|</span>\n'
+                  f'          <a href="{prefix}termos.html">Termos de Uso</a>\n'
+                  f'        </nav>\n'
+              )
+
+              marker = re.compile(r'(\s*<span class="studio-credit">.*?</span>\s*)', re.S)
+              match = marker.search(text)
+              if not match:
+                  continue
+              insert_at = match.end()
+              text = text[:insert_at] + '\n' + legal + text[insert_at:]
+              path.write_text(text, encoding='utf-8')
+              changed.append(str(path))
+
+          print('Arquivos alterados:', len(changed))
+          for item in changed:
+              print(item)
+      - name: Commit das alteracoes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html' '**/*.html'
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteracao necessaria."
+          else
+            git commit -m "Padroniza links legais nos rodapes"
+            git push
+          fi
