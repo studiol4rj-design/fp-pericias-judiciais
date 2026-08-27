@@ -2,43 +2,45 @@
   display: none !important;
 }
 
-/* Faixa final enxuta e integrada ao rodapé. */
+/* Faixa final realmente compacta. */
 .cta-section {
-  padding: 16px 0 14px;
+  padding: 8px 0 !important;
+  min-height: 0 !important;
   background: linear-gradient(180deg, #163b60 0%, #102a43 100%);
 }
 
 .cta-section .cta-inner {
-  gap: 16px;
+  min-height: 0 !important;
+  gap: 12px;
   align-items: center;
 }
 
 .cta-section .eyebrow {
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .cta-section .cta-inner h2 {
-  margin-bottom: 3px;
-  font-size: clamp(1.45rem, 2.45vw, 1.95rem);
-  line-height: 1.02;
+  margin-bottom: 2px;
+  font-size: clamp(1.55rem, 2.6vw, 2rem);
+  line-height: 1.04;
 }
 
 .cta-section .cta-inner p {
   max-width: 680px;
   margin: 0;
-  font-size: 0.88rem;
-  line-height: 1.28;
+  font-size: 0.9rem;
+  line-height: 1.25;
 }
 
 .cta-section .btn {
-  min-height: 36px;
-  padding: 7px 13px;
+  min-height: 34px;
+  padding: 6px 12px;
 }
 
 .site-footer {
   position: relative;
-  min-height: 0;
-  padding: 6px 0 8px;
+  min-height: 0 !important;
+  padding: 3px 0 4px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -52,7 +54,10 @@
   position: relative;
   display: block;
   max-width: 1180px;
-  min-height: 64px;
+  min-height: 0 !important;
+  height: auto !important;
+  padding-top: 2px;
+  padding-bottom: 2px;
   text-align: left;
 }
 
@@ -61,9 +66,9 @@
 }
 
 .footer-contacts h3 {
-  margin: 0 0 4px;
+  margin: 0 0 3px;
   color: #ffffff;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 900;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -71,14 +76,15 @@
 
 .footer-contact-list {
   display: grid;
-  gap: 2px;
+  gap: 1px;
 }
 
 .footer-contact-link {
   display: grid;
-  grid-template-columns: 19px minmax(0, 1fr);
+  grid-template-columns: 20px minmax(0, 1fr);
   gap: 6px;
   align-items: center;
+  min-height: 18px;
   color: #ffffff;
   text-decoration: none;
 }
@@ -90,8 +96,8 @@
 
 .footer-contact-icon {
   display: grid;
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
   place-items: center;
   color: #ffffff;
 }
@@ -117,26 +123,26 @@
   flex-direction: row;
   align-items: baseline;
   gap: 4px;
-  line-height: 1.05;
+  line-height: 1.08;
 }
 
 .footer-contact-copy strong {
   flex: 0 0 auto;
   color: #ffffff;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 800;
 }
 
 .footer-contact-copy span {
   min-width: 0;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 0.71rem;
+  font-size: 0.75rem;
   overflow-wrap: anywhere;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-/* Centro geométrico real do rodapé, independente da largura dos contatos. */
+/* Centro geométrico real do rodapé. */
 .footer-main {
   position: absolute;
   top: 50%;
@@ -151,19 +157,19 @@
 
 .footer-main > strong {
   color: #ffffff;
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   font-weight: 900;
 }
 
 .footer-main > span {
   color: rgba(255, 255, 255, 0.72);
-  font-size: 0.7rem;
-  line-height: 1.12;
+  font-size: 0.74rem;
+  line-height: 1.1;
 }
 
 .footer-main .content-protection {
   color: rgba(255, 255, 255, 0.58);
-  font-size: 0.63rem;
+  font-size: 0.67rem;
 }
 
 .footer-main .studio-credit {
@@ -181,7 +187,7 @@
 
 .footer-legal a {
   color: #ffffff;
-  font-size: 0.63rem;
+  font-size: 0.67rem;
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -200,17 +206,17 @@
 
 @media (max-width: 900px) {
   .cta-section {
-    padding: 18px 0 16px;
+    padding: 12px 0 !important;
   }
 
   .site-footer {
-    padding: 10px 0;
+    padding: 8px 0 !important;
   }
 
   .site-footer .footer-inner.footer-shell {
     display: grid;
-    min-height: 0;
-    gap: 10px;
+    min-height: 0 !important;
+    gap: 8px;
   }
 
   .footer-contacts {
