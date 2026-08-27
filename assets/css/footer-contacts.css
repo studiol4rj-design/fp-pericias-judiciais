@@ -4,25 +4,28 @@
 
 .site-footer {
   position: relative;
-  min-height: 190px;
+  min-height: 205px;
 }
 
 .site-footer .footer-inner {
   position: relative;
   z-index: 1;
-  min-height: 120px;
+  min-height: 135px;
 }
 
+/* Bloco de contatos à esquerda. Os três ícones usam SVG branco e
+   compartilham exatamente o mesmo eixo horizontal. */
 .site-footer::before {
   position: absolute;
   top: 24px;
   left: max(24px, calc((100vw - 1180px) / 2));
-  width: 300px;
-  padding: 0 0 0 38px;
+  width: 360px;
+  box-sizing: border-box;
+  padding-left: 40px;
   color: #ffffff;
   font-size: 0.86rem;
   font-weight: 600;
-  line-height: 1.65;
+  line-height: 1.85;
   text-align: left;
   white-space: pre-line;
   content: "CONTATOS\A WhatsApp  (21) 92020-0117\A Email  fppericiasjudiciais@gmail.com\A LinkedIn  linkedin.com/in/fernandopiresrj";
@@ -31,19 +34,21 @@
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' d='M3 5h18v14H3z'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' d='m3 6 9 7 9-7'/%3E%3C/svg%3E"),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.123 2.062 2.062 0 0 1 0 4.123zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-size: 24px 24px, 22px 22px, 22px 22px;
-  background-position: 2px 31px, 3px 61px, 3px 91px;
+  background-size: 23px 23px, 23px 23px, 23px 23px;
+  background-position: 1px 34px, 1px 60px, 1px 86px;
 }
 
+/* Informações legais discretas na base do rodapé. */
 .site-footer::after {
   position: absolute;
-  top: 24px;
-  left: max(24px, calc((100vw - 1180px) / 2));
-  color: #ffffff;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.68);
   font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  content: "";
+  font-weight: 600;
+  white-space: nowrap;
+  content: "Política de Privacidade   |   Termos de Uso";
 }
 
 @media (min-width: 901px) {
@@ -55,12 +60,20 @@
 @media (max-width: 900px) {
   .site-footer {
     min-height: 0;
-    padding-top: 178px;
+    padding-top: 190px;
+    padding-bottom: 48px;
   }
 
   .site-footer::before {
     top: 22px;
     left: 24px;
     width: calc(100% - 48px);
+  }
+
+  .site-footer::after {
+    bottom: 12px;
+    width: calc(100% - 48px);
+    text-align: center;
+    white-space: normal;
   }
 }
